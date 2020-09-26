@@ -23,22 +23,20 @@ DROP TABLE IF EXISTS `candidates`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `candidates` (
+  -- candidates details
   `id` int NOT NULL AUTO_INCREMENT,
   `roll_no` varchar(225) NOT NULL,
   `candidate_name` varchar(225) NOT NULL,
-  `image` blob NOT NULL,
+  `image_url` blob NOT NULL,
   `year` varchar(225) NOT NULL,
-  `Email` varchar(225) NOT NULL,
+  `email` varchar(225) NOT NULL,
   `position` varchar(225) NOT NULL,
   `gender` varchar(225) NOT NULL,
-  `btech_19_boys` tinyint NOT NULL,
-  `btech_19_girls` tinyint NOT NULL,
-  `btech_18_boys` tinyint NOT NULL,
-  `btech_18_girls` tinyint NOT NULL,
-  `btech_17_boys` tinyint NOT NULL,
-  `btech_17_girls` tinyint NOT NULL,
-  `pg_girls` tinyint NOT NULL,
-  `pg_boys` tinyint NOT NULL,
+  -- who can vote
+  `gender` tinyint NOT NULL, -- 0(male/female); 1(male) ; 2(female)
+  `degree` tinyint NOT NULL, -- 0(B.Tech/M.Tech/PhD); 1(B.Tech); 2(M.Tech); 3(PhD);
+  `year` tinyint NOT NULL, -- 0(all); 1(st year) ; 2(2nd year); 3(3rd year); 4(4th year)
+  -- Vote Count
   `votes` int NOT NULL,
   PRIMARY KEY (`id`,`roll_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
