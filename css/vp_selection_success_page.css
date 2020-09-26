@@ -1,0 +1,394 @@
+/*
+	@name vp_selection_success_page
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: table; position: relative; width: 1920px; height: 2763px; margin-left: auto; margin-right: auto;  }
+
+#_bg__vp_selection_success_page {
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 2763px;
+	background:rgba(255,255,255,255);
+}
+
+
+#icon_material_done {
+	top: 687.15002441406px;
+	left: -5.580078125px;
+	width: 26.400390625px;
+	height: 20.099975585938px;
+}
+
+
+#logo {
+	top: 0px;
+	left: 552px;
+	width: 817px;
+	height: 459px;
+}
+
+
+#gymkhana_elections_2020 {
+	top: 425px;
+	left: 625px;
+	width: 677px;
+	height: 81px;
+	font-family: Avenir LT Std;
+	font-size: 58px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#sophomore_year_positions {
+	top: 659px;
+	left: 343px;
+	width: 586px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#v_p__gymkhana {
+	top: 650px;
+	left: 1246px;
+	width: 330px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#006dff;
+}
+
+#candidate {
+	top: 872px;
+	left: 343px;
+	width: 1234px;
+	height: 414px;
+}
+
+#candidate_tab {
+	top: 0px;
+	left: 0px;
+	width: 1234px;
+	height: 414px;
+	-ms-border-radius: 75px;
+	-o-border-radius: 75px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
+	background:rgba(241,241,241,255);
+}
+
+
+#vote_button {
+	top: 257px;
+	left: 408px;
+	width: 155px;
+	height: 95px;
+	-ms-border-radius: 28px;
+	-o-border-radius: 28px;
+	-moz-border-radius: 28px;
+	-webkit-border-radius: 28px;
+	border-radius: 28px;
+	background:rgba(54,186,139,255);
+}
+
+
+#ellipse_1 {
+	top: 57px;
+	left: 55px;
+	width: 320px;
+	height: 320px;
+	-ms-border-radius: 150px / 150px;
+	-o-border-radius: 150px / 150px;
+	-moz-border-radius: 150px / 150px;
+	-webkit-border-radius: 150px / 150px;
+	border-radius: 150px / 150px;
+	border: 10px solid #006dff;
+	background:rgba(255,255,255,255);
+}
+
+
+#branch_ {
+	top: 150px;
+	left: 408px;
+	width: 170px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#computer_science {
+	top: 151px;
+	left: 581px;
+	width: 394px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#name_ {
+	top: 56px;
+	left: 408px;
+	width: 150px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#shivansh_shukla {
+	top: 57px;
+	left: 575px;
+	width: 339px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#icon_material_done_ek1 {
+	top: 284px;
+	left: 456px;
+	width: 50.4375px;
+	height: 42.4990234375px;
+}
+
+#candidate_ek1 {
+	top: 1500px;
+	left: 344px;
+	width: 1234px;
+	height: 414px;
+}
+
+#candidate_tab_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 1234px;
+	height: 414px;
+	-ms-border-radius: 75px;
+	-o-border-radius: 75px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
+	background:rgba(241,241,241,255);
+}
+
+
+#vote_button_ek1 {
+	top: 257px;
+	left: 408px;
+	width: 155px;
+	height: 95px;
+}
+
+
+#ellipse_1_ek1 {
+	top: 57px;
+	left: 55px;
+	width: 320px;
+	height: 320px;
+	-ms-border-radius: 150px / 150px;
+	-o-border-radius: 150px / 150px;
+	-moz-border-radius: 150px / 150px;
+	-webkit-border-radius: 150px / 150px;
+	border-radius: 150px / 150px;
+	border: 10px solid #006dff;
+	background:rgba(255,255,255,255);
+}
+
+
+#branch__ek1 {
+	top: 150px;
+	left: 408px;
+	width: 170px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#computer_science_ek1 {
+	top: 151px;
+	left: 581px;
+	width: 394px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#name__ek1 {
+	top: 56px;
+	left: 408px;
+	width: 150px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#shivansh_shukla_ek1 {
+	top: 57px;
+	left: 575px;
+	width: 339px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#vote {
+	top: 285px;
+	left: 443px;
+	width: 91px;
+	height: 46px;
+	font-family: Avenir LT Std;
+	font-size: 33px;
+	text-align: left;
+	color:#ffffff;
+}
+
+#candidate_ek2 {
+	top: 2133px;
+	left: 343px;
+	width: 1234px;
+	height: 414px;
+}
+
+#candidate_tab_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 1234px;
+	height: 414px;
+	-ms-border-radius: 75px;
+	-o-border-radius: 75px;
+	-moz-border-radius: 75px;
+	-webkit-border-radius: 75px;
+	border-radius: 75px;
+	background:rgba(241,241,241,255);
+}
+
+
+#vote_button_ek2 {
+	top: 257px;
+	left: 408px;
+	width: 155px;
+	height: 95px;
+	-ms-border-radius: 28px;
+	-o-border-radius: 28px;
+	-moz-border-radius: 28px;
+	-webkit-border-radius: 28px;
+	border-radius: 28px;
+	background:rgba(194,194,194,255);
+}
+
+
+#ellipse_1_ek2 {
+	top: 57px;
+	left: 55px;
+	width: 320px;
+	height: 320px;
+	-ms-border-radius: 150px / 150px;
+	-o-border-radius: 150px / 150px;
+	-moz-border-radius: 150px / 150px;
+	-webkit-border-radius: 150px / 150px;
+	border-radius: 150px / 150px;
+	border: 10px solid #006dff;
+	background:rgba(255,255,255,255);
+}
+
+
+#branch__ek2 {
+	top: 150px;
+	left: 408px;
+	width: 170px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#computer_science_ek2 {
+	top: 151px;
+	left: 581px;
+	width: 394px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#name__ek2 {
+	top: 56px;
+	left: 408px;
+	width: 150px;
+	height: 66px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#shivansh_shukla_ek2 {
+	top: 57px;
+	left: 575px;
+	width: 339px;
+	height: 65px;
+	font-family: Avenir LT Std;
+	font-size: 47px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#vote_ek1 {
+	top: 285px;
+	left: 443px;
+	width: 91px;
+	height: 46px;
+	font-family: Avenir LT Std;
+	font-size: 33px;
+	text-align: left;
+	color:#ffffff;
+}
+
+
+
+/* Add your custom CSS here */

@@ -1,0 +1,113 @@
+/*
+	@name login_page
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: table; position: relative; width: 1920px; height: 1079px; margin-left: auto; margin-right: auto;  }
+
+#_bg__login_page {
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1079px;
+	background:rgba(255,255,255,255);
+}
+
+
+#id_bar {
+	top: 478px;
+	left: 668px;
+	width: 588px;
+	height: 97px;
+	-ms-border-radius: 33px;
+	-o-border-radius: 33px;
+	-moz-border-radius: 33px;
+	-webkit-border-radius: 33px;
+	border-radius: 33px;
+	border: 1px solid #707070;
+	background:rgba(240,240,240,255);
+}
+
+
+#password_bar {
+	top: 678px;
+	left: 668px;
+	width: 588px;
+	height: 97px;
+	-ms-border-radius: 33px;
+	-o-border-radius: 33px;
+	-moz-border-radius: 33px;
+	-webkit-border-radius: 33px;
+	border-radius: 33px;
+	border: 1px solid #707070;
+	background:rgba(240,240,240,255);
+}
+
+
+#_login_button {
+	top: 878px;
+	left: 824px;
+	width: 259px;
+	height: 100px;
+	-ms-border-radius: 31px;
+	-o-border-radius: 31px;
+	-moz-border-radius: 31px;
+	-webkit-border-radius: 31px;
+	border-radius: 31px;
+	background:rgba(0,109,255,255);
+}
+
+
+#login {
+	top: 902px;
+	left: 897px;
+	width: 118px;
+	height: 62px;
+	font-family: Avenir LT Std;
+	font-size: 45px;
+	text-align: left;
+	color:#ffffff;
+}
+
+
+#webmail_id {
+	top: 419px;
+	left: 675px;
+	width: 187px;
+	height: 48px;
+	font-family: Avenir LT Std;
+	font-size: 35px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#password {
+	top: 619px;
+	left: 675px;
+	width: 154px;
+	height: 48px;
+	font-family: Avenir LT Std;
+	font-size: 35px;
+	text-align: left;
+	color:#000000;
+}
+
+
+#logo_gymkhana {
+	top: 53px;
+	left: 740px;
+	width: 472px;
+	height: 266px;
+}
+
+
+
+/* Add your custom CSS here */
