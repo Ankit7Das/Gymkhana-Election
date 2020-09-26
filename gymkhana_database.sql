@@ -28,10 +28,8 @@ CREATE TABLE `candidates` (
   `roll_no` varchar(225) NOT NULL,
   `candidate_name` varchar(225) NOT NULL,
   `image_url` blob NOT NULL,
-  `year` varchar(225) NOT NULL,
   `email` varchar(225) NOT NULL,
   `position` varchar(225) NOT NULL,
-  `gender` varchar(225) NOT NULL,
   -- who can vote
   `gender` tinyint NOT NULL, -- 0(male/female); 1(male) ; 2(female)
   `degree` tinyint NOT NULL, -- 0(B.Tech/M.Tech/PhD); 1(B.Tech); 2(M.Tech); 3(PhD);
