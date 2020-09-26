@@ -41,7 +41,7 @@ CREATE TABLE `candidates` (
   `pg_boys` tinyint NOT NULL,
   `votes` int NOT NULL,
   PRIMARY KEY (`id`,`roll_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `user` (
   `time_of_vote` datetime NOT NULL,
   `year` varchar(225) NOT NULL,
   PRIMARY KEY (`id`,`roll_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
