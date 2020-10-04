@@ -4,6 +4,9 @@
 * Clone and download it.
 * Create an issue.
 * Create a pull request.
+* Comment the details about the PR you created.
+* Tag the project mainatiner and wait for review.
+* Once the mainatiner reviews it, make changes if asked.
 
 
 ## Requirements
