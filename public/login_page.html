@@ -27,14 +27,22 @@
 	</head>
 	<body>
 		<div id="content-container" >
+			<form action="../routes/login.php" method="POST">
 			<div id="_bg__login_page"  ></div>
-			<div id="id_bar"  ></div>
-			<div id="password_bar"  ></div>
+			<div id="id_bar"  >
+				<input type="text" name="webid" autocomplete="off" class="form-control">
+			</div>
+			<div id="password_bar"  >
+				<input type="text" name="pass" autocomplete="off" class="form-control">
+			</div>
 			<a id="_login_button_link" href="web_1920___3.html" >
 			<div id="_login_button"  ></div>
 			</a>
 			<div id="login" >
-				Login
+				<button type="submit" class ="login">
+					Login
+				</button>
+
 			</div>
 			<div id="webmail_id" >
 				Webmail ID
@@ -43,6 +51,7 @@
 				Password
 			</div>
 			<img src="skins/logo_gymkhana.png" id="logo_gymkhana" />
+		</form>
 
 		</div>
 	</body>
