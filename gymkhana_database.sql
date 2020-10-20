@@ -29,6 +29,8 @@ CREATE TABLE `candidates` (
   `candidate_name` varchar(225) NOT NULL,
   `image_url` blob NOT NULL,
   `email` varchar(225) NOT NULL,
+  `phone` varchar(225) NOT NULL,
+  `hostel` varchar(225) NOT NULL,
   `position` varchar(225) NOT NULL,
   -- who can vote
   `gender` tinyint NOT NULL, -- 0(male/female); 1(male) ; 2(female)
@@ -61,6 +63,8 @@ CREATE TABLE `user` (
   `roll_no` varchar(225) NOT NULL,
   `gender` varchar(225) NOT NULL,
   `time_of_vote` datetime NOT NULL,
+  `phone` varchar(225) NOT NULL,
+  `hostel` varchar(225) NOT NULL,
   `year` varchar(225) NOT NULL,
   PRIMARY KEY (`id`,`roll_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
