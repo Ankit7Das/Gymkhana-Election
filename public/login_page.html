@@ -1,33 +1,43 @@
-<!-- 
-/*
- *	This content is generated from the PSD File Info.
- *	(Alt+Shift+Ctrl+I).
- *
- *	@desc 		
- *	@file 		login_page
- *	@date 		0
- *	@title 		login page
- *	@author 	
- *	@keywords 	
- *	@generator 	Export Kit v1.3.xd
- *
-*/
- -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
-	<head>
-		<meta http-equiv="content-type" content="text/html" charset="utf-8" />
-		<title>login_page</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="" >
-		<link rel="StyleSheet" href="./css/login_page.css" />
-		<script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
-		<!-- Add your custom HEAD content here -->
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="./css/login_page.css">
 
-	</head>
-	<body>
-		<div id="content-container" >
-			<form action="../routes/login.php" method="POST">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="container">
+	<div class="logo_gymkhana">
+		<img src="skins/logo_gymkhana.png" id="logo_gymkhana"/>
+		</div>
+  <form action="../routes/login.php" method="POST">
+    <h1>User Login</h1>
+    <div class="form-group" id="id_bar">
+      <input type="text" name="pass" autocomplete="off" class="form-control"/>
+      <label for="input" class="control-label">Webmail ID</label><i class="bar"></i>
+    </div>
+	<div class="form-group" id="password_bar" >
+		<input  type="text" name="pass" autocomplete="off" class="form-control"/>
+		<label for="input" class="control-label">Password</label><i class="bar"></i>
+	  </div>
+  
+  </form>
+  <div class="button-container">
+    <button type="submit" class="button"><span>Submit</span></button>
+  </div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>
+
+
+
+
+			<!-- <form action="../routes/login.php" method="POST">
 			<div id="_bg__login_page"  ></div>
 			<div id="id_bar"  >
 				<input type="text" name="webid" autocomplete="off" class="form-control">
@@ -51,8 +61,4 @@
 				Password
 			</div>
 			<img src="skins/logo_gymkhana.png" id="logo_gymkhana" />
-		</form>
-
-		</div>
-	</body>
-</html>
+		</form> -->
