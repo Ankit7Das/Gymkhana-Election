@@ -59,7 +59,7 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `roll_no` varchar(225) NOT NULL,
   `gender` varchar(225) NOT NULL,
   `time_of_vote` datetime NOT NULL,
