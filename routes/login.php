@@ -1,18 +1,20 @@
 <?php
 
-$webmail = htmlspecialchars($_POST["webid"]);
-$password =htmlspecialchars($_POST["pass"]);
+$webmail = trim(htmlspecialchars($_POST["webid"]));
+$password = trim(htmlspecialchars($_POST["pass"]));
 $data = [
   'email' => $webmail,
   'password'=>$password
 ];
 $httpcode= httpPost("http://localhost:4000/api/students/login",$data);// use LDAP url here
-echo $httpcode;
+
 
 if($httpcode == 200)
 {
     echo "success!!!";
-    echo "<script> location.href='../public/user_details.html'; </script>";
+    session_start();
+    $_SESSION['webmail'] = $webmail;
+    echo "<script> location.href='../routes/userDetails.php'; </script>";
 }else{
     echo "Invalid Credentials";
 }
@@ -33,7 +35,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, [
   $response = curl_exec($curl);
   $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
   curl_close($curl);
-  echo $httpcode;
+
   return $httpcode;
 }
 
