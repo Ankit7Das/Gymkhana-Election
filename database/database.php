@@ -1,7 +1,6 @@
 <?php 
   include '../config.php';
 
-  echo 'password ' . DBPASSWORD;
   class Database {
     // DB Params
     private $host = 'localhost';
@@ -17,6 +16,7 @@
       try { 
         $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
         $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "db connected";
       } catch(PDOException $e) {
         echo 'Connection Error: ' . $e->getMessage();
       }
