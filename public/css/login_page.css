@@ -58,7 +58,7 @@ h1 {
   transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
   z-index: -1;
 }
-.container:hover::before {
+.container:hover::before { 
   -webkit-transform: scale(1);
           transform: scale(1);
 }
