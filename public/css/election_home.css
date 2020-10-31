@@ -1,0 +1,56 @@
+body {
+  margin: 0px 0px;
+  background-color: #dbdad5;
+  overflow-x: hidden;
+}
+.sophomore {
+  text-align: center;
+  font-size: 1rem;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: black;
+  color: azure;
+}
+#logo {
+  width: 15rem;
+  height: 10rem;
+}
+#gymkhana_elections_2020 {
+  width: 15rem;
+}
+#grid_1_ek1 {
+  width: 100%;
+  height: auto;
+}
+/* #person1 {
+  width: 40px;
+} */
+#hosca_secretary {
+  text-align: center;
+  margin: 4rem;
+  font-size: 2rem;
+}
+button {
+  border: 2px solid grey;
+  height: 30px;
+  width: 100px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  color: black;
+}
+button:hover {
+  background-color: black;
+  color: whitesmoke;
+}
+.candidate {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
