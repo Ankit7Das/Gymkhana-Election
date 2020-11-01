@@ -33,7 +33,26 @@ $user->year =$year;
 // echo $user->isRegisteredUser();
 
 if($user->isRegisteredUser()){
-    echo "You have already registered!<br>Cannot change info once registered";
+    echo "<html>
+    <head>
+    <style>
+        p {text-align: center;}
+        div {text-align: center;}
+    </style>
+    </head>
+    <body>
+        <div>
+        <form action='../public/election_page_ui_display.html'>
+            <h4>You have already registered!</h4>
+            <h3>Click the button to continue voting</h3>
+            <div class='button-container'>
+				<button type='submit' class='button'><span>Continue</span></button>
+			</div>
+        </form>
+        </div>
+    </body>
+</html>";
+    
 }else{
     if($user->registerUser()){
         echo "succes!!";
@@ -42,4 +61,6 @@ if($user->isRegisteredUser()){
         echo "something went wrong";
     }
 }
+?>
+
 
