@@ -35,4 +35,25 @@
 
       }
       
+      public function isRegisteredUser(){
+        $query = 'SELECT
+          roll_no
+        FROM
+          ' . $this->table . '
+      WHERE roll_no = ?
+      LIMIT 0,1';
+
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(1, $this->roll_no);
+
+      $stmt->execute();
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if($row == null){
+        return false;
+      }
+      return true;
+      }
+      
   }

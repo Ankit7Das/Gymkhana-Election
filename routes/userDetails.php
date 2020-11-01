@@ -11,10 +11,11 @@ include_once '../models/user.php';
 session_start();
 
 $webmail = $_SESSION['webmail'];
-echo $webmail. " from login.php";
 
 session_destroy();
-$roll_no = substr($webmail,strpos($webmail,"_")+1);
+preg_match('~_(.*?)@~',$webmail,$output);
+$roll_no = $output[1];
+// $roll_no=$webmail;
 
 
 $database = new Database();
@@ -29,9 +30,16 @@ $user->time_of_vote = date("Y-m-d") . ' ' . date("G:i", strtotime(date("h:i:sa")
 $user->hostel =$hostel;
 $user->year =$year;
 
-if($user->registerUser()){
-    echo "succes!!";
-    echo "<script> location.href='../public/election_page_ui_display.html'; </script>";
+// echo $user->isRegisteredUser();
+
+if($user->isRegisteredUser()){
+    echo "You have already registered!<br>Cannot change info once registered";
 }else{
-    echo "something went wrong";
+    if($user->registerUser()){
+        echo "succes!!";
+        echo "<script> location.href='../public/election_page_ui_display.html'; </script>";
+    }else{
+        echo "something went wrong";
+    }
 }
+
