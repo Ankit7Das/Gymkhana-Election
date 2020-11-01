@@ -1,9 +1,9 @@
 <?php
-$name = "hello test";
-$phone = "989239422";
-$gender = "f";
-$year = "3";
-$hostel = "C.V.Raman";
+$name = htmlspecialchars($_POST["firstname"]);
+$phone = htmlspecialchars($_POST["Phone"]);
+$gender = htmlspecialchars($_POST["Gender"]);
+$year = htmlspecialchars($_POST["year"]);
+$hostel = htmlspecialchars($_POST["hostel"]);
 
 include_once '../database/Database.php';
 include_once '../models/user.php';
@@ -33,13 +33,34 @@ $user->year =$year;
 // echo $user->isRegisteredUser();
 
 if($user->isRegisteredUser()){
-    echo "You have already registered!<br>Cannot change info once registered";
+    echo "<html>
+    <head>
+    <style>
+        p {text-align: center;}
+        div {text-align: center;}
+    </style>
+    </head>
+    <body>
+        <div>
+        <form action='../public/election_home.html'>
+            <h4>You have already registered!</h4>
+            <h3>Click the button to continue voting</h3>
+            <div class='button-container'>
+				<button type='submit' class='button'><span>Continue</span></button>
+			</div>
+        </form>
+        </div>
+    </body>
+</html>";
+    
 }else{
     if($user->registerUser()){
         echo "succes!!";
-        echo "<script> location.href='../public/election_page_ui_display.html'; </script>";
+        echo "<script> location.href='../public/election_home.html'; </script>";
     }else{
         echo "something went wrong";
     }
 }
+?>
+
 

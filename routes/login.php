@@ -14,7 +14,7 @@ if($httpcode == 200)
     echo "success!!!";
     session_start();
     $_SESSION['webmail'] = $webmail;
-    echo "<script> location.href='../routes/userDetails.php'; </script>";
+    echo "<script> location.href='../public/User_details_new.html'; </script>";
 }else{
     echo "Invalid Credentials";
 }
