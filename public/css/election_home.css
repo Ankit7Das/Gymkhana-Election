@@ -11,7 +11,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 900px;
+  /*max-width: 900px;*/
+  width: 100%;
   margin: 0 auto;
   background-color: black;
   color: azure;
