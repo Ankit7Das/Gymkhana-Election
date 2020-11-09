@@ -27,7 +27,7 @@ CREATE TABLE `candidates` (
   `id` int NOT NULL AUTO_INCREMENT,
   `roll_no` varchar(225) NOT NULL,
   `candidate_name` varchar(225) NOT NULL,
-  `image_url` blob NOT NULL,
+  `image_url` varchar(500) NOT NULL,
   `email` varchar(225) NOT NULL,
   `phone` varchar(225) NOT NULL,
   `hostel` varchar(225) NOT NULL,
