@@ -142,33 +142,7 @@
                 
                 $i=0 ;
                 
-                if(count($vps)>0):
-                    $i++;
-                ?>
-
-                    <div id="hosca_secretary" >
-                        <h2>VP Gymkhana</h2>
-                    </div>
-                    <div class="container">
-                    <div class="row">
-                        <?php foreach($vps as $vp){ ?>
-                        <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($vp['image_url']) ?>" alt="sample70" />
-                            </div>
-                            <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($vp['candidate_name']) ?></span></h3>
-                            <h5>Vote</h5>
-                            <div style="align-items: center;">
-                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $vp['id']; ?>" class="gym">
-                            </div>
-                            </figcaption>
-                        </figure>
-                        <?php } ?>
-                    </div>
-                    </div>
-                <?php endif; ?>
-
-                <?php if(count($techs)>0):
+                 if(count($techs)>0):
                     $i++;
                 ?>
 
@@ -179,7 +153,7 @@
                     <div class="row">
                         <?php foreach($techs as $tech){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($tech['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($tech['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($tech['candidate_name']) ?></span></h3>
@@ -205,7 +179,7 @@
                     <div class="row">
                         <?php foreach($welfs as $welf){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($welf['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($welf['image_url']) ?>" alt="sample70" width="140" height ="140" />
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($welf['candidate_name']) ?></span></h3>
@@ -231,7 +205,7 @@
                     <div class="row">
                         <?php foreach($hoscas as $hosca){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($hosca['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($hosca['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($hosca['candidate_name']) ?></span></h3>
@@ -257,7 +231,7 @@
                     <div class="row">
                         <?php foreach($maintenances as $maintenance){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($maintenance['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($maintenance['image_url']) ?>" alt="sample70" width="140" height ="140" />
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($maintenance['candidate_name']) ?></span></h3>
@@ -283,7 +257,7 @@
                     <div class="row">
                         <?php foreach($sports as $sport){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($sport['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($sport['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($sport['candidate_name']) ?></span></h3>
@@ -309,7 +283,7 @@
                     <div class="row">
                         <?php foreach($messes as $mess){ ?>
                         <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($mess['image_url']) ?>" alt="sample70" />
+                            <div class="image"><img src="<?php echo htmlspecialchars($mess['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
                             <h3><span> <?php echo htmlspecialchars($mess['candidate_name']) ?></span></h3>
@@ -323,9 +297,35 @@
                     </div>
                     </div>
                 <?php endif; ?>
-                
-                
 
+
+
+                <?php if(count($vps)>0):
+                    $i++;
+                ?>
+
+                    <div id="hosca_secretary" >
+                        <h2>VP Gymkhana</h2>
+                    </div>
+                    <div class="container">
+                    <div class="row">
+                        <?php foreach($vps as $vp){ ?>
+                        <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
+                            <div class="image"><img src="<?php echo htmlspecialchars($vp['image_url']) ?>" alt="sample70" width="200" height ="200"/>
+                            </div>
+                            <figcaption>
+                            <h3><span> <?php echo htmlspecialchars($vp['candidate_name']) ?></span></h3>
+                            <h5>Vote</h5>
+                            <div style="align-items: center;">
+                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $vp['id']; ?>" class="gym">
+                            </div>
+                            </figcaption>
+                        </figure>
+                        <?php } ?>
+                    </div>
+                    </div>
+                <?php endif; ?>
+                
                     <div class="button-container" style="text-align: center;">
                         <button type="submit" name="submit" class="button"><span>Submit</span></button>
                     </div>
