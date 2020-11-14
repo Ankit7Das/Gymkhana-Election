@@ -67,6 +67,13 @@
 
     $vp_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position="vp"';
 
+    function split_name($name) {
+        $name = trim($name);
+        $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+        $first_name = trim( preg_replace('#'.preg_quote($last_name,'#').'#', '', $name ) );
+        return array($first_name, $last_name);
+    }
+
     //tech array
     $stmt = $db->prepare($tech_sql);
     $stmt->execute();
@@ -114,15 +121,28 @@
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <meta name="description" content="" >
           <link rel="StyleSheet" href="../public/css/election_home.css" /> 
+         <style>
+            .navbar{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /*max-width: 900px;*/
+                width: 100%;
+                margin: 0 auto;
+                background-color: black;
+                color: azure;
+
+                }
+         </style>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
          <!-- Add your custom HEAD content here -->
  
      </head>
      <body>
-         <div class="container">
+         <div class="navbar">
             <img src="../public/skins/logo.png" id="logo" />
-			<h1>Gymkhana Election 2020</h1>  
+            <h1>Gymkhana Election 2020</h1>  
          </div>
          <div>
              <div>
@@ -142,7 +162,7 @@
                 
                 $i=0 ;
                 
-                 if(count($techs)>0):
+                if(count($techs)>0):
                     $i++;
                 ?>
 
@@ -156,7 +176,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($tech['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($tech['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($tech['candidate_name']));  ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $tech['id']; ?>" class="gym">
@@ -182,7 +203,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($welf['image_url']) ?>" alt="sample70" width="140" height ="140" />
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($welf['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($welf['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $welf['id']; ?>" class="gym">
@@ -208,7 +230,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($hosca['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($hosca['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($hosca['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $hosca['id']; ?>" class="gym">
@@ -234,7 +257,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($maintenance['image_url']) ?>" alt="sample70" width="140" height ="140" />
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($maintenance['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($maintenance['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $maintenance['id']; ?>" class="gym">
@@ -260,7 +284,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($sport['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($sport['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($sport['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sport['id']; ?>" class="gym">
@@ -286,7 +311,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($mess['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($mess['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($mess['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $mess['id']; ?>" class="gym">
@@ -314,7 +340,8 @@
                             <div class="image"><img src="<?php echo htmlspecialchars($vp['image_url']) ?>" alt="sample70" width="200" height ="200"/>
                             </div>
                             <figcaption>
-                            <h3><span> <?php echo htmlspecialchars($vp['candidate_name']) ?></span></h3>
+                            <?php $name=split_name(htmlspecialchars($vp['candidate_name'])) ?>
+                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
                                 <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $vp['id']; ?>" class="gym">
