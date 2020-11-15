@@ -133,40 +133,59 @@
 
 ?>
 
- <!DOCTYPE html>
- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
-     <head>
-         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-         <title>Election Home Page</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <meta name="description" content="" >
-          <link rel="StyleSheet" href="../public/css/election_home.css" /> 
-         <style>
-            .navbar{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                /*max-width: 900px;*/
-                width: 100%;
-                margin: 0 auto;
-                background-color: black;
-                color: azure;
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+    <head>
+        <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+        <title>Election Home Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" >
+        <link rel="StyleSheet" href="../public/css/election_home.css" /> 
+        <style>
+        .navbar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*max-width: 900px;*/
+            width: 100%;
+            margin: 0 auto;
+            background-color: black;
+            color: azure;
 
+            }
+        </style>
+        <script>
+            document.getElementById("submit").onclick = function() {
+            let allAreFilled = true;
+                document.getElementById("myForm").querySelectorAll("[required]").forEach(function(i) {
+                    if (!allAreFilled) return;
+                    if (!i.value) allAreFilled = false;
+                    if (i.type === "radio") {
+                        let radioValueCheck = false;
+                        document.getElementById("myForm").querySelectorAll(`[name=${i.name}]`).forEach(function(r) {
+                            if (r.checked) radioValueCheck = true;
+                        })
+                        allAreFilled = radioValueCheck;
+                    }
+                })
+                if (!allAreFilled) {
+                    alert('Fill all the fields');
                 }
-         </style>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
-         <!-- Add your custom HEAD content here -->
+            };
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
+        <!-- Add your custom HEAD content here -->
  
-     </head>
-     <body>
-         <div class="navbar">
+    </head>
+    <body>
+        <div class="navbar">
             <img src="../public/skins/logo.png" id="logo" />
             <h1>Gymkhana Election 2020</h1>  
-         </div>
-         <div>
-             <div>
-                 <div class="sophomore">
+        </div>
+        <div>
+            <div>
+                <div class="sophomore">
                     <?php if ($ykey===1): ?>
                     <h1>Sophomore year Positions</h1>
                     <?php elseif ($ykey===2): ?>
@@ -174,9 +193,9 @@
                     <?php else: ?>
                     <h1>Senior year Positions</h1>
                     <?php endif; ?>
-                 </div>
+                </div>
                  
-                <form action="successVote.php" method="POST"> 
+                <form action="successVote.php" method="POST" id="myForm"> 
                     
                 <?php 
                 
@@ -201,7 +220,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $tech['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $tech['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -214,15 +233,18 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php
+                    endif; 
+                    ?>
     
-                    <?php if(count($welfs)>0):
+                    <?php 
+                    if(count($welfs)>0):
                         $i++;
                     ?>
     
@@ -240,7 +262,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $welf['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $welf['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -253,15 +275,18 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php
+                    endif; 
+                    ?>
     
-                    <?php if(count($hoscas)>0):
+                    <?php 
+                    if(count($hoscas)>0):
                         $i++;
                     ?>
     
@@ -279,7 +304,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $hosca['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $hosca['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -292,13 +317,15 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>        
-                    <?php endif; ?>
+                    <?php 
+                    endif; 
+                    ?>
     
                     <?php if(count($maintenances)>0):
                         $i++;
@@ -318,7 +345,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $maintenance['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $maintenance['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -331,15 +358,18 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                    <?php endif; ?>
+                    <?php 
+                    endif; 
+                    ?>
     
-                    <?php if(count($sports)>0):
+                    <?php 
+                    if(count($sports)>0):
                         $i++;
                     ?>
     
@@ -357,7 +387,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sport['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sport['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -370,15 +400,18 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>        
-                    <?php endif; ?>
+                    <?php 
+                    endif; 
+                    ?>
     
-                    <?php if(count($messes)>0):
+                    <?php 
+                    if(count($messes)>0):
                         $i++;
                     ?>
     
@@ -396,7 +429,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $mess['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $mess['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -409,17 +442,17 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                    <?php endif; 
+                    <?php 
+                    endif; 
                 else:
                     if(count($secs)>0):
                         $i++;
-
                     ?>
 
                         <div id="hosca_secretary" >
@@ -436,7 +469,7 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sec['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sec['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
@@ -449,19 +482,21 @@
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
                             </div>
                         </div>
-                    <?php endif; 
+                    <?php 
+                    endif; 
                 endif;    
                     ?>
 
 
 
-                <?php if(count($vps)>0):
+                <?php 
+                if(count($vps)>0):
                     $i++;
                 ?>
 
@@ -479,7 +514,7 @@
                             <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
-                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $vp['id']; ?>" class="gym">
+                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $vp['id']; ?>" class="gym" required>
                             </div>
                             </figcaption>
                         </figure>
@@ -492,22 +527,24 @@
                             <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                             <h5>Vote</h5>
                             <div style="align-items: center;">
-                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym">
+                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
                             </div>
                             </figcaption>
                         </figure>
                     </div>
                     </div>
-                <?php endif; ?>
+                <?php 
+                endif; 
+                ?>
                 
                     <div class="button-container" style="text-align: center;">
-                        <button type="submit" name="submit" class="button"><span>Submit</span></button>
+                        <button type="submit" name="submit" class="button" id="submit"><span>Submit</span></button>
                     </div>
 
                 </form>
                         
                         
-                </div>
             </div>
-     </body>
- </html>
+        </div>
+    </body>
+</html>
