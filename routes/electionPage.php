@@ -195,7 +195,7 @@
                     <?php endif; ?>
                 </div>
                  
-                <form action="successVote.php" method="POST" id="myForm"> 
+                <form action="successVote.php" method="POST" id="myForm" onSubmit="if(!confirm('Do you really want to submit the form?')){return false;}"> 
                     
                 <?php 
                 
