@@ -88,6 +88,7 @@ input[type=submit]:hover {
 }
 </style>
 </head>
+<title>User Details</title>
 <body>
     <div class="navbar">
         <img src="skins/logo.png" id="logo" />
@@ -96,15 +97,24 @@ input[type=submit]:hover {
 <div class="container">
     <diV style="text-align: center;">
         <h1>Welcome folks!</h1>
+        <h4>Please enter your details carefully! Once submitted you cannot change your details.<br>Providing wrong user information would bring upon serious penalties!<br>You will only be given one chance to vote after your have registererd.</h4>
     </diV>
     
   <form action="../routes/userDetails.php" method="POST">
     <div class="row">
       <div class="col-25">
-        <label for="fname">First Name</label>
+        <label for="fname">Name</label>
       </div>
       <div class="col-75">
         <input type="text" id="fname" autocomplete="off" name="firstname" placeholder="Your name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Roll number</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" autocomplete="off" name="rollno" placeholder="Your roll no..">
       </div>
     </div>
     <div class="row">
@@ -146,9 +156,9 @@ input[type=submit]:hover {
         </div>
         <div class="col-75">
           <select id="country" name="hostel">
-            <option value="CV Raman Hostel">CV Raman Hostel</option>
-            <option value="Old Boys hostel">Old Boys hostel</option>
-            <option value="Othershostel">Others</option>
+            <option value="CV Raman Hostel">C.V. Raman Hostel</option>
+            <option value="A.P.J. Abdul kalam">A.P.J. Abdul Kalam Hostel</option>
+            <option value="Asima Chatterjee">Asima Chatterjee</option>
           </select>
         </div>
       </div>
@@ -156,7 +166,7 @@ input[type=submit]:hover {
     
     <div class="row">
        <div style="display: flex; justify-content: center; margin-top: 2rem;">
-        <input type="submit" value="Submit">
+        <input type="submit" onclick="return confirm('Confirm Submission:Do You want to submit?');" value="Submit">
        </div> 
       
     </div>
