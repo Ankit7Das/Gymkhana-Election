@@ -46,43 +46,64 @@
       	border-radius: 6px;
       	text-decoration: none;
       	text-transform: uppercase;
-	  }
+	    }
 	  
-	  .tick {
-  display: block;
-  height: 200px;
-  margin: auto;
-  position: relative;
-  width: 200px;
-}
-.tick:before {
-  border: 1em solid #4d7c2a;
-  border-radius: 50%;
-  content: "";
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-.tick:after {
-  content: "";
-  background-color: transparent;
-  position: absolute;
-  left: 0;
-  margin: 20% 0 0 40%;
-  top: 0;
-  width: 20%;
-  border-bottom: 1em solid #4d7c2a;
-  height: 50%;
-  border-right: 1em solid #4d7c2a;
-  transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
+      .tick {
+        display: block;
+        height: 200px;
+        margin: auto;
+        position: relative;
+        width: 200px;
+      }
+      .tick:before {
+        border: 1em solid #4d7c2a;
+        border-radius: 50%;
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      .tick:after {
+        content: "";
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        margin: 20% 0 0 40%;
+        top: 0;
+        width: 20%;
+        border-bottom: 1em solid #4d7c2a;
+        height: 50%;
+        border-right: 1em solid #4d7c2a;
+        transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+      }
+
+      .navbar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*max-width: 900px;*/
+        width: 100%;
+        margin: 0 auto;
+        background-color: black;
+        color: azure;
+
+      }
+
+      #logo {
+        width: 15rem;
+        height: 10rem;
+      }
 
     </style>
   </head>
   <body>
+    <div class="navbar">
+      <img src="skins/logo.png" id="logo" />
+      <h1>Gymkhana Election 2020</h1>  
+   </div>
     <div class="container">
       <div class="heading"><span class="tick-container">
 		  <div class="tick"></div>
