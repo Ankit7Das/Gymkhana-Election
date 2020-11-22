@@ -51,7 +51,7 @@
     //query statement for the taking info
     if($degree===0):
         if($gkey===1):
-            //$tech_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND year=' . $ykey . ' AND position="technical" AND degree = '.$degree.'';
+            $tech_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND year=' . $ykey . ' AND position="technical" AND degree = '.$degree.'';
             $welf_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.' AND year='.$ykey.' AND position="welfare" AND degree = '.$degree.'';
             $hosca_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND year='.$ykey.' AND position="hosca" AND degree = '.$degree.'';
             $maintenance_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND year='.$ykey.' AND position="maintenance" AND degree = '.$degree.'';
