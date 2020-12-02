@@ -119,131 +119,85 @@ input[type=submit]:hover {
 <?php
 include('../database/database.php');
  session_start();
- $database = new Database();
- $db = $database->connect();
+ $db =  mysqli_connect('localhost:3307','root','Upscstanford','gymkhana_database');
 
 
  //girls
-$techg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="technical" AND degree =0 ';
- $stmt = $db->prepare($techg_sql);
-        $stmt->execute();
-        $techg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$techg_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="technical" AND degree =0 GROUP BY votes  DESC LIMIT 1 ';
+$techg_g = mysqli_query($db,$techg_sql);
+$welg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) as votes FROM candidates WHERE gender=2 AND position="welfare" AND degree =0 GROUP BY votes  DESC LIMIT 1';
+$welg_g = mysqli_query($db,$welg_sql);
+$hoscag_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="hosca" AND degree =0 GROUP BY votes  DESC LIMIT 1 ';
+$hoscag_g = mysqli_query($db,$hoscag_sql);
+$messg_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="mess" AND degree =0 GROUP BY votes  DESC LIMIT 1 ';
+$messg_g = mysqli_query($db,$messg_sql);
+$maintg_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="maintenance" AND degree =0 GROUP BY votes  DESC LIMIT 1 ';
+$maintg_g = mysqli_query($db,$maintg_sql);
+$sportsg_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="sports" AND degree =0 GROUP BY votes  DESC LIMIT 1 ';
+$sportsg_g = mysqli_query($db,$sportsg_sql);
+//pgg girls
+$pgg_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2  AND degree <> 0 GROUP BY votes  DESC LIMIT 1 ';
+$pgg_g = mysqli_query($db,$pgg_sql);
 
         
 
-$welg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="welfare" AND degree =0';
-$stmt = $db->prepare($welg_sql);
-        $stmt->execute();
-        $welg = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$hoscag_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="hosca" AND degree = 0';
-$stmt = $db->prepare($hoscag_sql);
-        $stmt->execute();
-        $hoscag = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$messg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="mess" AND degree = 0';
-$stmt = $db->prepare($messg_sql);
-        $stmt->execute();
-        $messg = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$maintg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="maintenance" AND degree = 0';
-$stmt = $db->prepare($maintg_sql);
-        $stmt->execute();
-        $maintg = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$sportsg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2 AND position="sports" AND degree = 0';
-$stmt = $db->prepare($sportsg_sql);
-        $stmt->execute();
-        $sportsg = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//pg girl
-$pgg_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=2  AND degree <>0';
-$stmt = $db->prepare($pgg_sql);
-        $stmt->execute();
-        $pgg = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 //sophomore 
-$techss_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="technical" AND degree = 0 AND year=1';
-$stmt = $db->prepare($techss_sql);
-        $stmt->execute();
-        $techss = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$welfs_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="welfare" AND degree = 0 AND year=1';
-$stmt = $db->prepare($welfs_sql);
-        $stmt->execute();
-        $welfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$sportss_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="sports" AND degree = 0 AND year=1';
-$stmt = $db->prepare($sportss_sql);
-        $stmt->execute();
-        $sportss = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$hoscas_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="hosca" AND degree = 0 AND year=1';
-$stmt = $db->prepare($hoscas_sql);
-        $stmt->execute();
-        $hoscas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$maints_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="maintenance" AND degree = 0 AND year=1';
-$stmt = $db->prepare($maints_sql);
-        $stmt->execute();
-        $maints = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$messs_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="mess" AND degree = 0 AND year=1';
-$stmt = $db->prepare($messs_sql);
-        $stmt->execute();
-        $messs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+$techss_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="technical" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$techss_b = mysqli_query($db,$techss_sql);
+$welfs_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="welfare" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$welfs_b = mysqli_query($db,$welfs_sql);
+$sportss_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="sports" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$sportss_b = mysqli_query($db,$sportss_sql);
+$hoscas_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="hosca" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$hoscas_b = mysqli_query($db,$hoscas_sql);
+$maints_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="maintenance" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$maints_b = mysqli_query($db,$maints_sql);
+$messs_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="mess" AND degree =0 AND year=1 GROUP BY votes  DESC LIMIT 1 ';
+$messs_b = mysqli_query($db,$messs_sql);
 //junior year
-$techj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="technical" AND degree = 0 AND year=2';
-$stmt = $db->prepare($techj_sql);
-        $stmt->execute();
-        $techj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$welfj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="welfare" AND degree = 0 AND year=2';
-$stmt = $db->prepare($welfj_sql);
-        $stmt->execute();
-        $welfj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$sportsj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="sports" AND degree = 0 AND year=2';
-$stmt = $db->prepare($sportsj_sql);
-        $stmt->execute();
-        $sportsj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$hoscaj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="hosca" AND degree = 0 AND year=2';
-$stmt = $db->prepare($hoscaj_sql);
-        $stmt->execute();
-        $hoscaj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$maintj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="maintenance" AND degree = 0 AND year=2';
-$stmt = $db->prepare($maintj_sql);
-        $stmt->execute();
-        $maintj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$messj_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="mess" AND degree = 0 AND year=2';
-$stmt = $db->prepare($messj_sql);
-        $stmt->execute();
-        $messj = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//senior yaer
-$techf_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="technical" AND degree = 0 AND year=3';
-$stmt = $db->prepare($techf_sql);
-        $stmt->execute();
-        $techf = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$welff_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="welfare" AND degree = 0 AND year=3';
-$stmt = $db->prepare($welff_sql);
-        $stmt->execute();
-        $welff = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$sportsf_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="sports" AND degree = 0 AND year=3';
-$stmt = $db->prepare($sportsf_sql);
-        $stmt->execute();
-        $sportsf = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$hoscaf_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="hosca" AND degree = 0 AND year=3';
-$stmt = $db->prepare($hoscaf_sql);
-        $stmt->execute();
-        $hoscaf = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$maintf_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="maintenance" AND degree = 0 AND year=3';
-$stmt = $db->prepare($maintf_sql);
-        $stmt->execute();
-        $maintf = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$messf_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1 AND position="mess" AND degree = 0 AND year=3';
-$stmt = $db->prepare($messf_sql);
-        $stmt->execute();
-        $messf = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//vp
-$vp_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE  position="vp"';
-$stmt = $db->prepare($vp_sql);
-        $stmt->execute();
-        $vp = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        
-//pg boys
-$pgb_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) FROM candidates WHERE gender=1  AND degree <> 0';
-$stmt = $db->prepare($pgb_sql);
-        $stmt->execute();
-        $pgb = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$techj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="technical" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$techj_b = mysqli_query($db,$techj_sql);
+$welfj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="welfare" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$welfj_b = mysqli_query($db,$welfj_sql);
+$sportsj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="sports" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$sportsj_b = mysqli_query($db,$sportsj_sql);
+$hoscaj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="hosca" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$hoscaj_b = mysqli_query($db,$hoscaj_sql);
+$maintj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="maintenance" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$maintj_b = mysqli_query($db,$maintj_sql);
+$messj_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="mess" AND degree =0 AND year=2 GROUP BY votes  DESC LIMIT 1 ';
+$messj_b = mysqli_query($db,$messj_sql);
+//senior year
+$techf_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="technical" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$techf_b = mysqli_query($db,$techf_sql);
+$welff_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="welfare" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$welff_b = mysqli_query($db,$welff_sql);
+$sportsf_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="sports" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$sportsf_b = mysqli_query($db,$sportsf_sql);
+$hoscaf_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="hosca" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$hoscaf_b = mysqli_query($db,$hoscaf_sql);
+$maintf_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="maintenance" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$maintf_b = mysqli_query($db,$maintf_sql);
+$messf_sql='SELECT id, candidate_name, roll_no, max(votes) as votes ,image_url,votes FROM candidates WHERE gender=1 AND position="mess" AND degree =0 AND year=3 GROUP BY votes  DESC LIMIT 1 ';
+$messf_b = mysqli_query($db,$messf_sql);
 
+
+
+
+
+
+
+//vp
+$vp_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) as votes FROM candidates WHERE  position="vp" GROUP BY votes  DESC LIMIT 1';
+
+$vp_b = mysqli_query($db,$vp_sql);    
+//pg boys
+$pgb_sql='SELECT id, candidate_name, roll_no, image_url,MAX(votes) as votes FROM candidates WHERE gender=1  AND degree <> 0 GROUP BY votes  DESC LIMIT 1';
+$pgb_b = mysqli_query($db,$pgb_sql);   
 
 ?>
 
@@ -256,7 +210,7 @@ $stmt = $db->prepare($pgb_sql);
 
 
 
-    if(isset($vp['image_url'])&& isset($vp['candidate_name'])):
+while($vp = mysqli_fetch_array($vp_b)){
 ?>
 
                  
@@ -283,7 +237,7 @@ $stmt = $db->prepare($pgb_sql);
 
                         </div>
                  <?php
-                    endif; 
+}
                     ?>
                  <!-- GIRLS CATEGORIES-->       
                 
@@ -299,7 +253,7 @@ $stmt = $db->prepare($pgb_sql);
 
 
 
-if(isset($hoscag['image_url'])&& isset($hoscag['candidate_name'])):
+while($hoscag = mysqli_fetch_array($hoscag_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -315,7 +269,7 @@ if(isset($hoscag['image_url'])&& isset($hoscag['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -330,7 +284,7 @@ if(isset($hoscag['image_url'])&& isset($hoscag['candidate_name'])):
 
 
 
-if(isset($techg['image_url'])&& isset($techg['candidate_name'])):
+while($techg = mysqli_fetch_array($techg_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -346,7 +300,7 @@ if(isset($techg['image_url'])&& isset($techg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+} 
                     ?>
                     </div>
                     
@@ -359,7 +313,7 @@ if(isset($techg['image_url'])&& isset($techg['candidate_name'])):
 
 
 
-if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
+while($welg = mysqli_fetch_array($welg_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -375,7 +329,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
 
@@ -389,7 +343,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($maintg['image_url'])&& isset($maintg['candidate_name'])):
+while($maintg = mysqli_fetch_array($maintg_g)){
 ?>
 
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
@@ -406,7 +360,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
 
                     </div>
@@ -420,7 +374,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($messg['image_url'])&& isset($messg['candidate_name'])):
+while($messg = mysqli_fetch_array($messg_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -436,7 +390,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -451,7 +405,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($sportsg['image_url'])&& isset($sportsg['candidate_name'])):
+while($sportsg= mysqli_fetch_array($sportsg_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -467,7 +421,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -484,7 +438,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($hoscas['image_url'])&& isset($hoscas['candidate_name'])):
+while($hoscas = mysqli_fetch_array($hoscas_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -500,7 +454,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -513,7 +467,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($techss['image_url'])&& isset($techss['candidate_name'])):
+while($techss = mysqli_fetch_array($techss_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -529,7 +483,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -543,7 +497,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($welfs['image_url'])&& isset($welfs['candidate_name'])):
+while($welfs = mysqli_fetch_array($welfs_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -559,7 +513,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
 
                     </div>
@@ -574,7 +528,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($maints['image_url'])&& isset($maints['candidate_name'])):
+while($maints = mysqli_fetch_array($maints_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -590,7 +544,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -605,7 +559,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-    if(isset($messs['image_url'])&& isset($messs['candidate_name'])):
+while($messs = mysqli_fetch_array($messs_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -621,7 +575,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
 
                     </div>
@@ -635,7 +589,7 @@ if(isset($welg['image_url'])&& isset($welg['candidate_name'])):
 
 
 
-if(isset($sportss['image_url'])&& isset($sportss['candidate_name'])):
+while($sportss = mysqli_fetch_array($sportss_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -651,7 +605,7 @@ if(isset($sportss['image_url'])&& isset($sportss['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -668,7 +622,7 @@ if(isset($sportss['image_url'])&& isset($sportss['candidate_name'])):
 
 
 
-if(isset($hoscaj['image_url'])&& isset($hoscaj['candidate_name'])):
+while($hoscaj = mysqli_fetch_array($hoscaj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -684,7 +638,7 @@ if(isset($hoscaj['image_url'])&& isset($hoscaj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -697,7 +651,7 @@ if(isset($hoscaj['image_url'])&& isset($hoscaj['candidate_name'])):
 
 
 
-if(isset($techj['image_url'])&& isset($techj['candidate_name'])):
+while($techj = mysqli_fetch_array($techj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -713,7 +667,7 @@ if(isset($techj['image_url'])&& isset($techj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -727,7 +681,7 @@ if(isset($techj['image_url'])&& isset($techj['candidate_name'])):
 
 
 
-if(isset($welfj['image_url'])&& isset($welfj['candidate_name'])):
+while($welfj = mysqli_fetch_array($welfj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -743,7 +697,7 @@ if(isset($welfj['image_url'])&& isset($welfj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -759,7 +713,7 @@ if(isset($welfj['image_url'])&& isset($welfj['candidate_name'])):
 
 
 
-if(isset($maintj['image_url'])&& isset($maintj['candidate_name'])):
+while($maintj = mysqli_fetch_array($maintj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -775,7 +729,7 @@ if(isset($maintj['image_url'])&& isset($maintj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -789,7 +743,7 @@ if(isset($maintj['image_url'])&& isset($maintj['candidate_name'])):
 
 
 
-if(isset($messj['image_url'])&& isset($messj['candidate_name'])):
+while($messj = mysqli_fetch_array($messj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -805,7 +759,7 @@ if(isset($messj['image_url'])&& isset($messj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -820,7 +774,7 @@ if(isset($messj['image_url'])&& isset($messj['candidate_name'])):
 
 
 
-if(isset($sportsj['image_url'])&& isset($sportsj['candidate_name'])):
+while($sportsj = mysqli_fetch_array($sportsj_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -836,7 +790,7 @@ if(isset($sportsj['image_url'])&& isset($sportsj['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -853,7 +807,7 @@ if(isset($sportsj['image_url'])&& isset($sportsj['candidate_name'])):
 
 
 
-if(isset($hoscaf['image_url'])&& isset($hoscaf['candidate_name'])):
+while($hoscaf = mysqli_fetch_array($hoscaf_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -869,7 +823,7 @@ if(isset($hoscaf['image_url'])&& isset($hoscaf['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -882,7 +836,7 @@ if(isset($hoscaf['image_url'])&& isset($hoscaf['candidate_name'])):
 
 
 
-if(isset($techf['image_url'])&& isset($techf['candidate_name'])):
+while($techf = mysqli_fetch_array($techf_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -899,7 +853,7 @@ if(isset($techf['image_url'])&& isset($techf['candidate_name'])):
                       </div>
                     </div>
                     <?php
-                    endif; 
+}
                     ?>
 
 
@@ -911,7 +865,7 @@ if(isset($techf['image_url'])&& isset($techf['candidate_name'])):
 
 
 
-if(isset($welff['image_url'])&& isset($welff['candidate_name'])):
+while($welff = mysqli_fetch_array($welff_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -927,7 +881,7 @@ if(isset($welff['image_url'])&& isset($welff['candidate_name'])):
 
                       </div>
                        <?php
-                    endif; 
+}
                     ?>
                     </div>
 
@@ -942,7 +896,7 @@ if(isset($welff['image_url'])&& isset($welff['candidate_name'])):
 
 
 
-if(isset($maintf['image_url'])&& isset($maintf['candidate_name'])):
+while($maintf = mysqli_fetch_array($maintf_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -958,7 +912,7 @@ if(isset($maintf['image_url'])&& isset($maintf['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -972,7 +926,7 @@ if(isset($maintf['image_url'])&& isset($maintf['candidate_name'])):
 
 
 
-if(isset($messf['image_url'])&& isset($messf['candidate_name'])):
+while($messf = mysqli_fetch_array($messf_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -988,7 +942,7 @@ if(isset($messf['image_url'])&& isset($messf['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -1002,7 +956,7 @@ if(isset($messf['image_url'])&& isset($messf['candidate_name'])):
 
 
 
-if(isset($sportsf['image_url'])&& isset($sportsf['candidate_name'])):
+while($sportsf = mysqli_fetch_array($sportsf_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -1018,7 +972,7 @@ if(isset($sportsf['image_url'])&& isset($sportsf['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                    
@@ -1035,7 +989,7 @@ if(isset($sportsf['image_url'])&& isset($sportsf['candidate_name'])):
 
 
 
-if(isset($pgg['image_url'])&& isset($pgg['candidate_name'])):
+while($pgg = mysqli_fetch_array($pgg_g)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -1051,7 +1005,7 @@ if(isset($pgg['image_url'])&& isset($pgg['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
@@ -1064,7 +1018,7 @@ if(isset($pgg['image_url'])&& isset($pgg['candidate_name'])):
 
 
 
-if(isset($pgb['image_url'])&& isset($pgb['candidate_name'])):
+while($pgb = mysqli_fetch_array($pgb_b)){
 ?>
                         <div style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536; border-radius: 8px; padding: 10px;background-color: #4158a4;margin: 10px;">
                             <div id="person1"  >
@@ -1080,7 +1034,7 @@ if(isset($pgb['image_url'])&& isset($pgb['candidate_name'])):
 
                       </div>
                       <?php
-                    endif; 
+}
                     ?>
                     </div>
                     
