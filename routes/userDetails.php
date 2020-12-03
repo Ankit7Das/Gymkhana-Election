@@ -1,7 +1,7 @@
 <?php
-$name = htmlspecialchars($_POST["firstname"]);
-$phone = htmlspecialchars($_POST["Phone"]);
-$roll = htmlspecialchars($_POST["rollno"]);
+$name = trim(htmlspecialchars($_POST["firstname"]));
+$phone = trim(htmlspecialchars($_POST["Phone"]));
+$roll = strtolower(trim(htmlspecialchars($_POST["rollno"])));
 $gender = htmlspecialchars($_POST["Gender"]);
 $year = htmlspecialchars($_POST["year"]);
 $hostel = htmlspecialchars($_POST["hostel"]);
@@ -9,7 +9,7 @@ $hostel = htmlspecialchars($_POST["hostel"]);
 include_once '../database/database.php';
 include_once '../models/user.php';
 
-if (empty($name) || empty($roll) || empty($phone)) {
+if (empty($name) || empty($roll) || strlen($phone)!=10) {
     echo "<script> location.href='../public/error_signup.html'; </script>";
 } else {
 
