@@ -119,7 +119,9 @@ input[type=submit]:hover {
 <?php
 include('../database/database.php');
  session_start();
- $db =  mysqli_connect('localhost:3307','root','Upscstanford','gymkhana_database');
+ $database = new Database();
+
+ $db =  $database->mysqliconnect();
 
 
  //girls
