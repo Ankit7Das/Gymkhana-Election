@@ -115,12 +115,12 @@
     $vps = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     //none sql
-    $none_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position="none"';
+    //$none_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position="none"';
 
     //none of these option
-    $stmt = $db->prepare($none_sql);
-    $stmt->execute();
-    $none = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //$stmt = $db->prepare($none_sql);
+    //$stmt->execute();
+    //$none = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     function split_name($name) {
         $name = trim($name);
@@ -225,18 +225,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>
                     <?php
@@ -267,18 +255,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>
                     <?php
@@ -309,18 +285,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>        
                     <?php 
@@ -350,18 +314,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>
                     <?php 
@@ -392,18 +344,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>        
                     <?php 
@@ -434,18 +374,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>
                     <?php 
@@ -474,18 +402,6 @@
                                     </figcaption>
                                 </figure>
                                 <?php } ?>
-                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                                    </div>
-                                    <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                                    <h5>Vote</h5>
-                                    <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                                    </div>
-                                    </figcaption>
-                                </figure>
                             </div>
                         </div>
                     <?php 
@@ -519,18 +435,6 @@
                             </figcaption>
                         </figure>
                         <?php } ?>
-                        <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($none['0']['image_url']) ?>" alt="sample70" width="140" height ="140"/>
-                            </div>
-                            <figcaption>
-                            <?php $name=split_name(htmlspecialchars($none['0']['candidate_name']));  ?>
-                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                            <h5>Vote</h5>
-                            <div style="align-items: center;">
-                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $none['0']['id']; ?>" class="gym" required>
-                            </div>
-                            </figcaption>
-                        </figure>
                     </div>
                     </div>
                 <?php 
