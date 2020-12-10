@@ -3,14 +3,15 @@ $name = trim(htmlspecialchars($_POST["firstname"]));
 $phone = trim(htmlspecialchars($_POST["Phone"]));
 $roll = strtolower(trim(htmlspecialchars($_POST["rollno"])));
 $gender = htmlspecialchars($_POST["Gender"]);
-$year = htmlspecialchars($_POST["year"]);
+// $year = htmlspecialchars($_POST["year"]);
 $hostel = htmlspecialchars($_POST["hostel"]);
 
 include_once '../database/database.php';
 include_once '../models/user.php';
 
 if (empty($name) || empty($roll) || strlen($phone)!=10) {
-    echo "<script> location.href='../public/error_signup.html'; </script>";
+    echo "Please enter the correct details! ";
+    echo "<script> location.href='../public/error_signup.php'; </script>";
 } else {
 
     session_start();
@@ -31,6 +32,15 @@ if (empty($name) || empty($roll) || strlen($phone)!=10) {
     
         $database = new Database();
         $db = $database->connect();
+
+        if(substr($roll_no,0,4)=="1901")
+        $year = "2nd";
+        else if(substr($roll_no,0,4)=="1801")
+        $year = "3rd";
+        else if(substr($roll_no,0,4)=="1701")
+        $year = "4th";
+        else
+        $year = "5th";
     
         $user = new User($db);
     

@@ -237,7 +237,6 @@ $database = new Database();
 $db = $database->connect();
 
 
-
  //girls
 
 $techg_sql='SELECT id, candidate_name, roll_no, SUM(votes) as count,max(votes) as votes ,image_url,votes FROM candidates WHERE gender=2 AND position="technical" AND degree =0 GROUP BY votes  DESC  ';

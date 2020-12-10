@@ -23,4 +23,14 @@
 
       return $this->conn;
     }
+    //mysqli connect
+    public function mysqliconnect() {
+      $this->conn = null;
+
+      $this->conn=mysqli_connect($this->host,$this->username,$this->password,$this->db_name);
+      if (!$this->conn) {
+        die('Connect Error: ' . mysqli_connect_errno());
+      }
+      return $this->conn;
+    }
   }
