@@ -11,7 +11,7 @@ $pop = imap_open('{' .$mailhost. '}', $username, $password);
 if ($pop == false) 
 {
     echo "<center>Authentication Failed</center>\n";
-    echo "<script> location.href='../public/error_signup.html'; </script>";
+    echo "<script> location.href='../public/error.html'; </script>";
 } 
 else 
 {
