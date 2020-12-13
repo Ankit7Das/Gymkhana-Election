@@ -54,6 +54,7 @@ if (empty($name) || empty($roll) || strlen($phone)!=10 || strlen($roll)!=8) {
     
         $_SESSION['gender'] = $user->gender;
         $_SESSION['year'] = $user->year;
+        $_SESSION['rollno'] = $user->roll_no;
     
         // echo $user->isRegisteredUser();
     
