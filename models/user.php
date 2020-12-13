@@ -10,6 +10,7 @@
       public $hostel;
       public $phone;
       public $time_of_vote;
+      public $is_voted;
       
 
       public function __construct($db){
@@ -17,7 +18,7 @@
       }
       
       public function registerUser(){
-          $query= 'INSERT INTO ' . $this->table . ' SET roll_no = :roll_no, time_of_vote = :time_of_vote, gender = :gender, phone = :phone,hostel= :hostel, year = :year';
+          $query= 'INSERT INTO ' . $this->table . ' SET roll_no = :roll_no, time_of_vote = :time_of_vote, gender = :gender, phone = :phone,hostel= :hostel, year = :year, is_voted= :is_voted';
           $stmt = $this->conn->prepare($query);
 
           $stmt->bindParam(':roll_no',$this->roll_no);
@@ -26,6 +27,7 @@
           $stmt->bindParam(':phone',$this->phone);
           $stmt->bindParam(':hostel',$this->hostel);
           $stmt->bindParam(':year',$this->year);
+          $stmt->bindParam(':is_voted',$this->is_voted);
 
           if($stmt->execute()) {
             return true;
@@ -55,5 +57,26 @@
       }
       return true;
       }
+
+    public function hasVoted(){
+      $query = 'SELECT
+          is_voted
+        FROM
+          ' . $this->table . '
+      WHERE roll_no = ?
+      LIMIT 0,1';
+       
+      $stmt = $this->conn->prepare($query);
+      $stmt->bindParam(1, $this->roll_no);
+
+      $stmt->execute();
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if($row['is_voted']==1)
+         return true;
+      return false;
+
+    }
       
   }

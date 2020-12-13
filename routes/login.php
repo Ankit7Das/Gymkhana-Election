@@ -5,8 +5,8 @@ $password = trim(htmlspecialchars($_POST["pass"]));
 $mailhost="stud.iitp.ac.in:995/pop3/ssl/novalidate-cert";
 
 $username =substr($webmail, 0,strpos($webmail, "@"));
-$pop = imap_open('{' .$mailhost. '}', $username, $password);
-
+// $pop = imap_open('{' .$mailhost. '}', $username, $password);
+$pop =true;
 
 if ($pop == false) 
 {
