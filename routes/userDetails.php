@@ -9,7 +9,7 @@ $hostel = htmlspecialchars($_POST["hostel"]);
 include_once '../database/database.php';
 include_once '../models/user.php';
 
-if (empty($name) || empty($roll) || strlen($phone)!=10) {
+if (empty($name) || empty($roll) || strlen($phone)!=10 || strlen($roll)!=8) {
     echo "Please enter the correct details! ";
     echo "<script> location.href='../public/error_signup.php'; </script>";
 } else {
@@ -22,8 +22,8 @@ if (empty($name) || empty($roll) || strlen($phone)!=10) {
     // preg_match('~_(.*?)@~', $webmail, $output);
     // $roll_no = $output[1];
     // $roll_no=$webmail;
-    if(strpos($webmail,$roll)!==false){
-        $roll_no = $roll;
+    $roll_no = $roll;
+
         if ($roll_no[2] === '0' && $roll_no[3] === '1') {
             $_SESSION['degree'] = 0;
         } else {
@@ -50,14 +50,19 @@ if (empty($name) || empty($roll) || strlen($phone)!=10) {
         $user->time_of_vote = date("Y-m-d") . ' ' . date("G:i", strtotime(date("h:i:sa")));
         $user->hostel = $hostel;
         $user->year = $year;
+        $user->is_voted = 0;
     
         $_SESSION['gender'] = $user->gender;
         $_SESSION['year'] = $user->year;
+        $_SESSION['rollno'] = $user->roll_no;
     
         // echo $user->isRegisteredUser();
     
         if ($user->isRegisteredUser()) {
-            echo "<script> location.href='../public/error.html'; </script>";
+            if($user->hasVoted()){
+                echo "<script> location.href='../public/error.html'; </script>";
+            }
+            echo "<script> location.href='../public/continue_voting.php'; </script>";
         } else {
             if ($user->registerUser()) {
                 echo "succes!!";
@@ -66,7 +71,5 @@ if (empty($name) || empty($roll) || strlen($phone)!=10) {
                 echo "something went wrong";
             }
         }
-    }else{
-        echo "<script> location.href='../public/error_signup.html'; </script>";
-    }   
+    
 }

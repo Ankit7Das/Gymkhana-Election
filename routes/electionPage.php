@@ -129,7 +129,7 @@
         return array($first_name, $last_name);
     }
 
-    session_destroy();
+
 
 ?>
 

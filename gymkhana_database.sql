@@ -66,6 +66,7 @@ CREATE TABLE `user` (
   `phone` varchar(225) NOT NULL,
   `hostel` varchar(225) NOT NULL,
   `year` varchar(225) NOT NULL,
+  `is_voted` tinyint NOT NULL, -- 0 for not voted 1 for voted
   PRIMARY KEY (`id`,`roll_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
