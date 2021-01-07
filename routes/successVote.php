@@ -35,6 +35,7 @@ if($stmt1->execute()){
 
 }
 session_destroy();
+clearstatcache();
 }
 
 

@@ -90,3 +90,19 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2020-09-26 10:54:20
+
+DROP TABLE IF EXISTS `allStudents`;
+
+CREATE TABLE `allStudents`(
+  `id` int NOT NULL AUTO_INCREMENT,
+  `roll_no` varchar(225) NOT NULL,
+  `webmail` varchar(255) NOT NULL,
+  `gender` varchar(255) NOT NULL, -- 0 for male 1 for female
+  PRIMARY KEY (`id`,`roll_no`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `allStudents` (`roll_no`,`webmail`,`gender`) VALUES
+('1901cs01','abhay_1901cs01@iitp.ac.in','0'),
+('1901cs02','abhinav_1901cs02@iitp.ac.in','0'),
+('1901CS03','abhishek_1901cs03@iitp.ac.in','0');
+
