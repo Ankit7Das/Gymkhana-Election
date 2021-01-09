@@ -28,7 +28,7 @@ else
       session_start();
       imap_close($pop);
       $_SESSION['webmail'] = $webmail;
-      echo "<script> location.href='../public/User_details_new.html'; </script>";
+      echo "<script> location.href='../routes/UserDetails.php'; </script>";
 }
 
 ?>
