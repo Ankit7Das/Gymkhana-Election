@@ -142,17 +142,17 @@
         <meta name="description" content="" >
         <link rel="StyleSheet" href="../public/css/election_home.css" /> 
         <style>
-        .navbar{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /*max-width: 900px;*/
-            width: 100%;
-            margin: 0 auto;
-            background-color: black;
-            color: azure;
+    .navbar1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /*max-width: 900px;*/
+      width: 100%;
+      margin: 0 auto;
+      background-color: black;
+      color: azure;
 
-            }
+    }
         </style>
         <script>
             document.getElementById("submit").onclick = function() {
@@ -179,7 +179,7 @@
  
     </head>
     <body>
-        <div class="navbar">
+        <div class="navbar1">
             <img src="../public/skins/logo.png" id="logo" />
             <h1>Gymkhana Election 2020</h1>  
         </div>

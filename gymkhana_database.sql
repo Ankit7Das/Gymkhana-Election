@@ -63,6 +63,7 @@ CREATE TABLE `user` (
   `roll_no` varchar(225) NOT NULL,
   `gender` varchar(225) NOT NULL,
   `time_of_vote` datetime NOT NULL,
+  `degree` varchar(255) NOT NULL,
   `phone` varchar(225) NOT NULL,
   `hostel` varchar(225) NOT NULL,
   `year` varchar(225) NOT NULL,
