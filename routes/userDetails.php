@@ -1,5 +1,8 @@
 <?php
 
+include_once '../database/database.php';
+include_once '../models/user.php';
+
 if(isset($_POST['Submit'])){
 $name = trim(htmlspecialchars($_POST["firstname"]));
 $phone = trim(htmlspecialchars($_POST["Phone"]));
@@ -7,9 +10,6 @@ $roll = strtolower(trim(htmlspecialchars($_POST["rollno"])));
 $gender = htmlspecialchars($_POST["Gender"]);
 // $year = htmlspecialchars($_POST["year"]);
 $hostel = htmlspecialchars($_POST["hostel"]);
-
-include_once '../database/database.php';
-include_once '../models/user.php';
 
 if (empty($name) || empty($roll) || strlen($phone)!=10 || strlen($roll)!=8) {
     echo "Please enter the correct details! ";
