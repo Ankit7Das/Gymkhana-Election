@@ -2,6 +2,7 @@
  <!DOCTYPE html>
  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
      <head>
+     <link rel="icon" href="skins/logo.png" type="image/ico">
          <title>
              Error occured 
          </title>

@@ -7,6 +7,7 @@
         <title>Election Home Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="" >
+        <link rel="icon" href="skins/logo.png" type="image/ico">
         <link rel="StyleSheet" href="../public/css/election_home.css" /> 
         
         
