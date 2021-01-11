@@ -20,36 +20,32 @@ $res = $stmt->fetch(PDO::FETCH_ASSOC);
 if (isset($_POST['Submit'])) {
   $name = trim(htmlspecialchars($_POST["firstname"]));
   $phone = trim(htmlspecialchars($_POST["Phone"]));
-  $roll = strtolower(trim(htmlspecialchars($_POST["rollno"])));
-  $gender = htmlspecialchars($_POST["Gender"]);
+  // $roll = strtolower(trim(htmlspecialchars($_POST["rollno"])));
+  // $gender = htmlspecialchars($_POST["Gender"]);
   // $year = htmlspecialchars($_POST["year"]);
   $hostel = htmlspecialchars($_POST["hostel"]);
 
-  if (empty($name) || empty($roll) || strlen($phone) != 10 || strlen($roll) != 8) {
+  if (empty($name) || strlen($phone) != 10) {
     echo "Please enter the correct details! ";
     echo "<script> location.href='../public/error_signup.php'; </script>";
   } else {
 
 
-
+    if($res['Gender'] == 'm')
+    $gender = 'Male';
+    else
+    $gender = 'Female';
     //session_destroy();
     // preg_match('~_(.*?)@~', $webmail, $output);
     // $roll_no = $output[1];
     // $roll_no=$webmail;
-    $roll_no = $roll;
+    $roll_no = "NA";
 
-    if ($roll_no[2] === '0' && $roll_no[3] === '1') {
-      $_SESSION['degree'] = 0;
-    } else {
-      $_SESSION['degree'] = 1;
-    }
-
-
-    if (substr($roll_no, 0, 4) == "1901")
+    if ($res['Year'] == "2019")
       $year = "2nd";
-    else if (substr($roll_no, 0, 4) == "1801")
+    else if ($res['Year'] == "2018")
       $year = "3rd";
-    else if (substr($roll_no, 0, 4) == "1701")
+    else if ($res['Year'] == "2017")
       $year = "4th";
     else
       $year = "5th";
@@ -61,6 +57,8 @@ if (isset($_POST['Submit'])) {
     $user->phone = $phone;
     $user->time_of_vote = date("Y-m-d") . ' ' . date("G:i", strtotime(date("h:i:sa")));
     $user->hostel = $hostel;
+    $user->degree = $res['Category'];
+    $user->webmail = $res['Email'];
     $user->year = $year;
     $user->is_voted = 0;
 
