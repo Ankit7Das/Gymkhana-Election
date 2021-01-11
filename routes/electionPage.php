@@ -42,7 +42,7 @@
 
         $degree = $_SESSION['degree'];
     }else{
-        echo "<script> location.href=''; </script>";
+        echo "<script> location.href='../public/error.html'; </script>";
     }
 
     $database = new Database();

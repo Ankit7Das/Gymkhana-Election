@@ -14,7 +14,7 @@
      </diV>
          <?php
            sleep(3);
-           echo "<script> location.href='../public/User_details_new.html'; </script>";
+           echo "<script> location.href='../routes/userDetails.php'; </script>";
            ?>
            
      </body>

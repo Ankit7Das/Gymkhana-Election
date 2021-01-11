@@ -41,6 +41,12 @@ if (isset($_POST['Submit'])) {
     // $roll_no=$webmail;
     $roll_no = "NA";
 
+    if ($res['Category'] == 'btech') {
+      $_SESSION['degree'] = 0;
+  } else {
+      $_SESSION['degree'] = 1;
+  }
+
     if ($res['Year'] == "2019")
       $year = "2nd";
     else if ($res['Year'] == "2018")
