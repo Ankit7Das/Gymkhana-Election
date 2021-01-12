@@ -4,7 +4,12 @@ Official Website of Gymkhana IIT Patna to conduct Gymkhana election online.
 ### Environment Setup
 
 create a config.php file
-add your mysql password as DBPASSWORD   
+add your mysql password as DBPASSWORD
+
+```
+<?php
+define('DBPASSWORD','');
+```
 
 ### Database Setup 
 
