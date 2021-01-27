@@ -50,6 +50,7 @@
 
     //query statement for the taking info
     if($degree===0):
+        $ug_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE position="UG" AND degree = '.$degree.'';
         if($gkey===1):
             $tech_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND year=' . $ykey . ' AND position="technical" AND degree = '.$degree.'';
             $welf_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.' AND year='.$ykey.' AND position="welfare" AND degree = '.$degree.'';
@@ -96,13 +97,18 @@
         $stmt->execute();
         $messes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    else:
-        $sec_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.' AND degree = '.$degree.'';
-
-        //sec array
-        $stmt = $db->prepare($sec_sql);
+        //UG rep array
+        $stmt = $db->prepare($ug_sql);
         $stmt->execute();
-        $secs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $ug = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    else:
+        $pg_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE degree = '.$degree.'';
+
+        //PG rep array
+        $stmt = $db->prepare($pg_sql);
+        $stmt->execute();
+        $pg = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     endif;
 
@@ -378,27 +384,57 @@
                             </div>
                         </div>
                     <?php 
-                    endif; 
-                else:
-                    if(count($secs)>0):
+                    endif;
+                    ?>
+
+                    <?php
+                    if(count($ug)>0):
                         $i++;
                     ?>
 
                         <div id="hosca_secretary" >
-                            <h2>Secretary</h2>
+                            <h2>UG Representative</h2>
                         </div>
                         <div class="container">
                             <div class="row">
-                                <?php foreach($secs as $sec){ ?>
+                                <?php foreach($ug as $ugr){ ?>
                                 <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                                    <div class="image"><img src="<?php echo htmlspecialchars($sec['image_url']) ?>" alt="sample70" width="140" height ="140"/>
+                                    <div class="image"><img src="<?php echo htmlspecialchars($ugr['image_url']) ?>" alt="sample70" width="140" height ="140"/>
                                     </div>
                                     <figcaption>
-                                    <?php $name=split_name(htmlspecialchars($sec['candidate_name'])) ?>
+                                    <?php $name=split_name(htmlspecialchars($ugr['candidate_name'])) ?>
                                     <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
                                     <h5>Vote</h5>
                                     <div style="align-items: center;">
-                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $sec['id']; ?>" class="gym" required>
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $ugr['id']; ?>" class="gym" required>
+                                    </div>
+                                    </figcaption>
+                                </figure>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php 
+                    endif;    
+                else:
+                    if(count($pg)>0):
+                        $i++;
+                    ?>
+
+                        <div id="hosca_secretary" >
+                            <h2>PG Representative</h2>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <?php foreach($pg as $pgr){ ?>
+                                <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
+                                    <div class="image"><img src="<?php echo htmlspecialchars($pgr['image_url']) ?>" alt="sample70" width="140" height ="140"/>
+                                    </div>
+                                    <figcaption>
+                                    <?php $name=split_name(htmlspecialchars($pgr['candidate_name'])) ?>
+                                    <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
+                                    <h5>Vote</h5>
+                                    <div style="align-items: center;">
+                                        <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $pgr['id']; ?>" class="gym" required>
                                     </div>
                                     </figcaption>
                                 </figure>
