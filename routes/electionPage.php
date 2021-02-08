@@ -50,7 +50,7 @@
 
     //query statement for the taking info
     if($degree===0):
-        $ug_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE position="ugr"';
+        $ug_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE position="UG" AND degree = '.$degree.'';
         if($gkey===1):
             $tech_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND year=' . $ykey . ' AND position="technical" AND degree = '.$degree.'';
             $welf_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.' AND year='.$ykey.' AND position="welfare" AND degree = '.$degree.'';
@@ -67,74 +67,43 @@
             $mess_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="mess" AND degree = '.$degree.'';    
         endif;
 
+        //tech array
+        $stmt = $db->prepare($tech_sql);
+        $stmt->execute();
+        $techs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //welf array
+        $stmt = $db->prepare($welf_sql);
+        $stmt->execute();
+        $welfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //hosca array
+        $stmt = $db->prepare($hosca_sql);
+        $stmt->execute();
+        $hoscas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //maintenance array
+        $stmt = $db->prepare($maintenance_sql);
+        $stmt->execute();
+        $maintenances = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //sports array
+        $stmt = $db->prepare($sports_sql);
+        $stmt->execute();
+        $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        //mess array
+        $stmt = $db->prepare($mess_sql);
+        $stmt->execute();
+        $messes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         //UG rep array
         $stmt = $db->prepare($ug_sql);
         $stmt->execute();
         $ug = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    elseif($degree==1):
-        $ug_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position = "ugr"';
-        if($gkey===1):
-            $tech_sql="SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND position='technical' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-            $welf_sql="SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.'  AND position='welfare' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-            $hosca_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='hosca' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-            $maintenance_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='maintenance' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-            $sports_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='sports' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-            $mess_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='mess' AND (degree = '.$degree.' OR degree = '.($degree+1).')";
-        else:
-            $tech_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender=' . $gkey . ' AND position="technical" AND degree >= '.$degree.'';
-            $welf_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="welfare" AND degree >= '.$degree.'';
-            $hosca_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="hosca" AND degree >= '.$degree.'';
-            $maintenance_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="maintenance" AND degree >= '.$degree.'';
-            $sports_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="sports" AND degree >= '.$degree.'';
-            $mess_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="mess" AND degree >= '.$degree.'';    
-        endif;
-
-        //UG rep array
-        $stmt = $db->prepare($ug_sql);
-        $stmt->execute();
-        $ug = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    elseif($degree==2):
-        $pg_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position = "pgr"';
-        if($gkey===1):
-            $tech_sql="SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . '  AND position='technical' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-            $welf_sql="SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.'  AND position='welfare' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-            $hosca_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='hosca' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-            $maintenance_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='maintenance' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-            $sports_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position='sports' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-            $mess_sql="SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position='mess' AND (degree = '.$degree.' OR degree = '.($degree-1).')";
-        else:
-            $tech_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender=' . $gkey . ' AND position="technical" AND degree >= '.($degree-1).'';
-            $welf_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="welfare" AND degree >= '.($degree-1).'';
-            $hosca_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="hosca" AND degree >= '.($degree-1).'';
-            $maintenance_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="maintenance" AND degree >= '.($degree-1).'';
-            $sports_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="sports" AND degree >= '.($degree-1).'';
-            $mess_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="mess" AND degree >= '.($degree-1).'';    
-        endif;
-
-        //PG rep array
-        $stmt = $db->prepare($pg_sql);
-        $stmt->execute();
-        $pg = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     else:
-        $pg_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position = "pgr"';
-        if($gkey===1):
-            $tech_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender=' . $gkey . ' AND position="technical" AND degree = '.$degree.'';
-            $welf_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE gender='.$gkey.'  AND position="welfare" AND degree = '.$degree.'';
-            $hosca_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position="hosca" AND degree = '.$degree.'';
-            $maintenance_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position="maintenance" AND degree = '.$degree.'';
-            $sports_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position="sports" AND degree = '.$degree.'';
-            $mess_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.'  AND position="mess" AND degree = '.$degree.'';
-        else:
-            $tech_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender=' . $gkey . ' AND position="technical" AND degree >= '.($degree-2).'';
-            $welf_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="welfare" AND degree >= '.($degree-2).'';
-            $hosca_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="hosca" AND degree >= '.($degree-2).'';
-            $maintenance_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="maintenance" AND degree = '.($degree-2).'';
-            $sports_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="sports" AND degree >= '.($degree-2).'';
-            $mess_sql='SELECT id, candidate_name, roll_no, position,image_url FROM candidates WHERE gender='.$gkey.' AND position="mess" AND degree >= '.($degree-2).'';    
-        endif;
+        $pg_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE degree = '.$degree.'';
 
         //PG rep array
         $stmt = $db->prepare($pg_sql);
@@ -142,44 +111,6 @@
         $pg = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     endif;
-
-    //tech array
-    $stmt = $db->prepare($tech_sql);
-    $stmt->execute();
-    $techs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //welf array
-    $stmt = $db->prepare($welf_sql);
-    $stmt->execute();
-    $welfs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //hosca array
-    $stmt = $db->prepare($hosca_sql);
-    $stmt->execute();
-    $hoscas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //maintenance array
-    $stmt = $db->prepare($maintenance_sql);
-    $stmt->execute();
-    $maintenances = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //sports array
-    $stmt = $db->prepare($sports_sql);
-    $stmt->execute();
-    $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //mess array
-    $stmt = $db->prepare($mess_sql);
-    $stmt->execute();
-    $messes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //gensec sql
-    $gensec_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position="gensec"';
-
-    //gensec array
-    $stmt = $db->prepare($gensec_sql);
-    $stmt->execute();
-    $gensecs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     //vp sql
     $vp_sql='SELECT id, candidate_name, roll_no, position, image_url FROM candidates WHERE position="vp"';
@@ -277,9 +208,9 @@
                 
                 $i=0 ;
                 
-                
-                if(count($techs)>0):
-                    $i++;
+                if($degree===0):
+                    if(count($techs)>0):
+                        $i++;
                 ?>
     
                         <div id="hosca_secretary" >
@@ -304,12 +235,12 @@
                             </div>
                         </div>
                     <?php
-                endif; 
+                    endif; 
                     ?>
     
                     <?php 
-                if(count($welfs)>0):
-                    $i++;
+                    if(count($welfs)>0):
+                        $i++;
                     ?>
     
                         <div id="hosca_secretary" >
@@ -334,12 +265,12 @@
                             </div>
                         </div>
                     <?php
-                endif; 
+                    endif; 
                     ?>
     
                     <?php 
-                if(count($hoscas)>0):
-                    $i++;
+                    if(count($hoscas)>0):
+                        $i++;
                     ?>
     
                         <div id="hosca_secretary" >
@@ -364,11 +295,11 @@
                             </div>
                         </div>        
                     <?php 
-                endif; 
+                    endif; 
                     ?>
     
                     <?php if(count($maintenances)>0):
-                    $i++;
+                        $i++;
                     ?>
     
                         <div id="hosca_secretary" >
@@ -393,12 +324,12 @@
                             </div>
                         </div>
                     <?php 
-                endif; 
+                    endif; 
                     ?>
     
                     <?php 
-                if(count($sports)>0):
-                    $i++;
+                    if(count($sports)>0):
+                        $i++;
                     ?>
     
                         <div id="hosca_secretary" >
@@ -423,12 +354,12 @@
                             </div>
                         </div>        
                     <?php 
-                endif; 
+                    endif; 
                     ?>
     
                     <?php 
-                if(count($messes)>0):
-                    $i++;
+                    if(count($messes)>0):
+                        $i++;
                     ?>
     
                         <div id="hosca_secretary" >
@@ -453,12 +384,10 @@
                             </div>
                         </div>
                     <?php 
-                endif;
+                    endif;
                     ?>
 
                     <?php
-
-                if($degree===0 || $degree===1):
                     if(count($ug)>0):
                         $i++;
                     ?>
@@ -517,35 +446,7 @@
                 endif;    
                     ?>
 
-                <?php 
-                if(count($gensecs)>0):
-                    $i++;
-                ?>
 
-                    <div id="hosca_secretary" >
-                        <h2>General Secretary</h2>
-                    </div>
-                    <div class="container">
-                    <div class="row">
-                        <?php foreach($gensecs as $gensec){ ?>
-                        <figure class="snip1218 col" style="display: flex;width: 97%;justify-content: space-around;flex-wrap: wrap; border: 3px solid #353536;padding: 0; border-radius: 8px; background-color: #aaaabd;">
-                            <div class="image"><img src="<?php echo htmlspecialchars($gensec['image_url']) ?>" alt="sample70" width="200" height ="200"/>
-                            </div>
-                            <figcaption>
-                            <?php $name=split_name(htmlspecialchars($gensec['candidate_name'])) ?>
-                            <h3><?php echo $name['0'] ?></br><span> <?php echo $name['1'] ?></span></h3>
-                            <h5>Vote</h5>
-                            <div style="align-items: center;">
-                                <input type="radio" name="votecheck[<?php echo $i ?>]" value="<?php echo $gensec['id']; ?>" class="gym" required>
-                            </div>
-                            </figcaption>
-                        </figure>
-                        <?php } ?>
-                    </div>
-                    </div>
-                <?php 
-                endif; 
-                ?>
 
                 <?php 
                 if(count($vps)>0):
